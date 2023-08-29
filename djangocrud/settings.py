@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,6 +23,7 @@ SECRET_KEY = 'django-insecure-(oa(omhdw75#3qzk_p-6zfdfmvj#%tn=oci!ww+ssog(ib%-o=
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = ['faztcode--carlos-azocar-r.repl.co']
 
@@ -69,8 +70,11 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv("DB_NAME"), #'django.db.backends.sqlite3',
+        'NAME': os.getenv("DB_USER"), #BASE_DIR / 'db.sqlite3',
+        #'USER': os.getenv("DB_USER"),
+        #'PASSWORD': os.getenv("DB_PASSWORD"),
+        #'HOST': os.getenv("DB_HOST")
     }
 }
 
